@@ -1,0 +1,13 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: configServer
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/raphaelbenevides18/config-server
+          default-label: main
+          search-paths:
+          - 'greeting-service'
