@@ -37,7 +37,7 @@ public class BookController {
 		var cambio = proxy.getCambio(book.getPrice(), "USD", currency);
 		
 		var port = env.getProperty("local.server.port");
-		book.setEnvironment(port + " FEIGN");
+		book.setEnvironment("Book Port: " + port + " Cambio Port: " + cambio.getEnvironment());
 		book.setPrice(cambio.getConvertedValue());
 		book.setCurrency(currency);
 		return book;
