@@ -14,7 +14,10 @@ import br.com.rlb.entity.Book;
 import br.com.rlb.proxy.CambioProxy;
 import br.com.rlb.repository.BookRepository;
 import br.com.rlb.response.Cambio;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Book endpoint")
 @RestController
 @RequestMapping("book-service")
 public class BookController {
@@ -28,6 +31,7 @@ public class BookController {
 	@Autowired
 	private CambioProxy proxy;
 	
+	@Operation(summary = "Find a specific book by your ID with feign")
 	@GetMapping(value = "/{id}/{currency}")	
 	public Book findBook(
 			@PathVariable("id") Long id, @PathVariable("currency") String currency) {
@@ -43,6 +47,7 @@ public class BookController {
 		return book;
 	}
 	
+	@Operation(summary = "First version of the find book with rest tamplate")
 	@GetMapping(value = "/v1/{id}/{currency}")	
 	public Book findBookV1(
 			@PathVariable("id") Long id,
